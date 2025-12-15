@@ -38,7 +38,7 @@ fn main() {
             .read_line(&mut input)
             .expect("Failed to read input");
 
-        let input = input.trim();
+        let input = input.trim().to_lowercase();
 
         if input == "quit" {
             println!("<> | Thank you for playing!");
