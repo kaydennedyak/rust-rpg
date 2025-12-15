@@ -25,7 +25,7 @@ fn main() {
     // Main gameplay loop
     loop {
         if player.activity_timeout > 0 {
-            println!("You must wait {} seconds...", player.activity_timeout);
+            println!("You must wait {} seconds... returning home!", player.activity_timeout);
             std::thread::sleep(Duration::from_secs(player.activity_timeout.into()));
             player.activity_timeout = 0;
         }
@@ -47,14 +47,14 @@ fn main() {
             let mut rng = rand::rng();
             let chance: u8 = rng.random_range(1..=100);
 
-            if chance <= 40 {
-                let reward = rng.random_range(1..=10);
+            if chance <= 60 {
+                let reward = rng.random_range(1..=20);
                 player.gold += reward;
                 println!("You dug and found {} gold! You now have {} total gold.", reward, player.gold);
-                player.activity_timeout = 3;
+                player.activity_timeout = 2;
             } else {
                 println!("You dug and found nothing!");
-                player.activity_timeout = 2;
+                player.activity_timeout = 1;
             }
         } else {
             println!("<> | Not a valid command");
